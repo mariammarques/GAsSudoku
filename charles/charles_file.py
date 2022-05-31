@@ -2,7 +2,7 @@ from random import random, randint
 import numpy as np
 from copy import deepcopy
 from operator import attrgetter
-import sys
+
 import heapq
 
 

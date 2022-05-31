@@ -4,6 +4,7 @@ import numpy as np
 
 puzzle_as_array = np.asarray([puzzle[x:x+9] for x in range(0, len(puzzle), 9)])
 
+
 def swap_mutation(individual):
     """
     Implementation of swap mutation.

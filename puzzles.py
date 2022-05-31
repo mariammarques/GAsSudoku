@@ -47,4 +47,4 @@ very_hard = [0, 0, 0, 0, 6, 0, 0, 0, 0,
              0, 0, 0, 5, 0, 0, 8, 0, 0]
 
 # Select the puzzle that you want to use in the sudoku solver
-puzzle = very_hard
+puzzle = medium

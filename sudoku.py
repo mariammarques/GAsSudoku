@@ -1,5 +1,5 @@
-import timeit
-import_module = """
+# import timeit
+# import_module = """
 # Necessary imports
 from charles.charles_file import Original, Population
 from charles.selection import fps, tournament, ranking
@@ -8,8 +8,8 @@ from charles.mutation import swap_mutation, inversion_mutation
 from puzzles import puzzle
 import numpy as np
 from matplotlib import pyplot as plt
-"""
-testcode = """
+# """
+# testcode = """
 # Converting the original puzzle (which was a list) to a numpy array
 original_puzzle_as_array = np.asarray([puzzle[x:x+9] for x in range(0, len(puzzle), 9)])
 # Creating the original puzzle with the class Original
@@ -22,19 +22,19 @@ fitness_values = []
 
 while solution_found == 0:
     pop = Population(
-        500,
+        100,
         original_puzzle,
         "max"
     )
 
     solution_found, fitness = pop.evolve(
-        gens=1000,
+        gens=200,
         select=ranking,
         crossover=pmx_co,
-        mutate=swap_mutation,
+        mutate=inversion_mutation,
         co_p=0.90,
-        mu_p=0.15,
-        elitism=5
+        mu_p=0.10,
+        elitism=0.1
     )
 
     fitness_values.append(fitness)
@@ -46,10 +46,10 @@ for sublist in fitness_values:
 
 generations = [generation for generation in range(len(fitness_all))]
 
-#plt.plot(generations, fitness_all)
-#plt.show()
+plt.plot(generations, fitness_all)
+plt.show()
 print("Solution found in gen number: " + str(generations[-1]+1))
-"""
+# """
 
-times = timeit.repeat(stmt=testcode, setup=import_module, number=1, repeat=10)
-print("Average time:" + str(round(sum(times)/len(times), 2)))
+# times = timeit.repeat(stmt=testcode, setup=import_module, number=1, repeat=1)
+# print("Average time:" + str(round(sum(times)/len(times), 2)))
